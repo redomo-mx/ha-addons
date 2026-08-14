@@ -1,0 +1,38 @@
+name: Agente Redomo
+version: "0.1.0"
+slug: redomo_agent
+description: >-
+  Ejecuta las automatizaciones de Redomo desde esta casa, sin depender de que
+  nadie tenga la app abierta.
+url: https://github.com/redomo-mx/ha-addons/tree/main/redomo-agent
+image: ghcr.io/redomo-mx/redomo-agent-{arch}
+
+arch:
+  - amd64
+  - aarch64
+
+# El complemento pide acceso a Home Assistant y el Supervisor le entrega una
+# credencial propia al arrancar. Por eso la configuración de abajo NO incluye
+# ningún token: no hay que crearlo, ni guardarlo en el equipo, ni rotarlo, ni se
+# puede filtrar.
+homeassistant_api: true
+
+# Se reinicia solo si se cae, y arranca con Home Assistant. Las automatizaciones
+# de una casa no pueden depender de que alguien se acuerde de encenderlo.
+startup: application
+boot: auto
+init: false
+
+options:
+  supabase_url: "https://boycrbjiqijuxujkvydy.supabase.co"
+  supabase_anon_key: ""
+  agent_email: ""
+  agent_password: ""
+  tick_seconds: 15
+
+schema:
+  supabase_url: url
+  supabase_anon_key: str
+  agent_email: str
+  agent_password: password
+  tick_seconds: int(5,300)
