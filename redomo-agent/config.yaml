@@ -1,5 +1,5 @@
 name: Agente Redomo
-version: "0.2.10"
+version: "0.2.11"
 slug: redomo_agent
 description: >-
   Ejecuta las automatizaciones de Redomo desde esta casa, sin depender de que
