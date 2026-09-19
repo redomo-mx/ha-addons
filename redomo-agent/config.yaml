@@ -29,6 +29,7 @@ options:
   agent_email: ""
   agent_password: ""
   tick_seconds: 15
+  tunnel_token: ""
 
 schema:
   supabase_url: url
@@ -36,3 +37,14 @@ schema:
   agent_email: str
   agent_password: password
   tick_seconds: int(5,300)
+  # El tunel de soporte, opcional. Se saca del panel de Cloudflare Zero Trust al
+  # crear un tunel para esta casa, y sirve para entrar a dar soporte sin abrir
+  # ningun puerto del router del cliente.
+  #
+  # Vacio = esta casa no tiene tunel. Es un estado valido: las automatizaciones
+  # y la app funcionan igual, solo que no se puede entrar desde fuera.
+  #
+  # Quien tenga este texto puede levantar el tunel de esta casa desde cualquier
+  # parte del mundo. Por eso va como `password`: no se ve en pantalla y no sale
+  # en el registro.
+  tunnel_token: password?
