@@ -23,9 +23,20 @@ startup: application
 boot: auto
 init: false
 
+# La clave `anon` viene puesta, y eso es correcto: es PUBLICA por diseno.
+#
+# Va dentro de la app que cualquiera descarga al abrir app.redomo.mx, asi que
+# ponerla aqui no la expone mas de lo que ya esta. Lo que protege los datos no es
+# esta clave, es que cada consulta pasa por las politicas de la base: con ella
+# sola, sin haber entrado, no se puede leer ni escribir nada de ninguna casa.
+#
+# Se pone para quitar un paso de la instalacion. Pegarla a mano en cada casa no
+# daba ninguna seguridad y si daba una forma de equivocarse -- y equivocarse ahi
+# significa un agente que no arranca en casa de un cliente, con el instalador ya
+# de salida.
 options:
   supabase_url: "https://boycrbjiqijuxujkvydy.supabase.co"
-  supabase_anon_key: ""
+  supabase_anon_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJveWNyYmppcWlqdXh1amt2eWR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxMTQwOTQsImV4cCI6MjEwMTY5MDA5NH0.obtOkFs0xIrPChJLIOknMvZssxbSaKkwpphyclquhxU"
   agent_email: ""
   agent_password: ""
   tick_seconds: 15
